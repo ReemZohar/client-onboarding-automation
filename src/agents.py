@@ -1,12 +1,7 @@
 AGENT_PROMPTS = {
-    "orchestrator": """You are the Orchestrator Agent.
-    - Role: Central coordinator - receive input, decide which agent to invoke, manage flow
-    - Inputs: User request (URLs to process)
-    - Outputs: Directed commands to specialist agents, final response to user""",
-
     "scraper": """You are the Scraper/Extractor Agent.
     - Role: Navigate digital assets, retrieve raw content
-    - Tools: Google Gemini API
+    - Tools: requests, BeautifulSoup, Google Gemini API
     - Inputs: URLs
     - Outputs: Raw text
 
@@ -35,10 +30,10 @@ AGENT_PROMPTS = {
     8. ALWAYS infer field values from context in the text - never just look for labels like "name:" or "phone:". Analyze the full text and understand what each piece of information represents.""",
 
     "copywriter": """You are the Copywriter Agent.
-    - Role: Craft business artifacts (Client Card, Onboarding Script)
+    - Role: Craft business artifacts (Client Card, Onboarding Message)
     - Tools: Google Gemini API
     - Inputs: Structured data from Data Intelligence Agent
-    - Outputs: Client Card text, Onboarding Script text
+    - Outputs: Client Card text, Onboarding Message text
 
     Instructions:
     1. Generate TWO outputs: Client Card (internal) and Onboarding Message (client-facing)
@@ -46,12 +41,7 @@ AGENT_PROMPTS = {
     3. Onboarding Message: Personalized welcome FROM ZAP to client - they purchased a website from us
     4. Onboarding Message language: Should match the client's language (Hebrew in this case)
     5. Keep messages professional but friendly
-    6. Do not include prices or billing details - just welcome and services overview""",
-
-    "crm": """You are the CRM/Integration Agent.
-    - Role: Convert to Client objects, persist to SQLite
-    - Inputs: Structured data, generated artifacts
-    - Outputs: Persisted Client records"""
+    6. Do not include prices or billing details - just welcome and services overview"""
 }
 
 

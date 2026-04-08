@@ -50,7 +50,7 @@ DO NOT include onboarding message - this is for internal team reference only."""
 
         try:
             response = self.client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-2.5-flash-lite",
                 contents=prompt
             )
             return response.text
@@ -84,7 +84,7 @@ Client Information:
 
         try:
             response = self.client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-2.5-flash-lite",
                 contents=prompt
             )
             return response.text
