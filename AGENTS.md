@@ -43,23 +43,22 @@ Website/Minisite → Scraper Agent → Raw Content → Data Intelligence Agent �
 
 ### 4. CRM/Integration Agent
 - **Role**: Convert to Client objects, persist
-- **Tools**: SQLite (built-in), json (for embedding vectors if needed later)
+- **Tools**: JSON file (local storage)
 - **Inputs**: Structured data, generated artifacts
 - **Outputs**: Persisted Client records in CRM
 
 ## Data Schema
 
-**Client Object** (stored in SQLite):
-- `id`: Unique identifier (auto-increment)
+**Client Object** (stored in JSON):
 - `name`: Client business name
 - `phone`: Contact phone
 - `email`: Contact email
 - `address`: Physical address
 - `services`: Comma-separated service categories
-- `onboarding_script`: Generated onboarding script (text)
+- `onboarding_msg`: Generated onboarding script (text)
 - `client_card`: Generated client summary (text)
 
-**Minimal Storage**: SQLite with 1 table (`clients`). No external DB required.
+**Minimal Storage**: Local JSON file. No external DB required.
 
 ## Technical Principles
 

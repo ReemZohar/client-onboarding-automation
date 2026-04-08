@@ -49,7 +49,7 @@ AGENT_PROMPTS = {
     6. Do not include prices or billing details - just welcome and services overview""",
 
     "crm": """You are the CRM/Integration Agent.
-    - Role: Convert to Client objects, persist to SQLite
+    - Role: Convert to Client objects, persist to local JSON
     - Inputs: Structured data, generated artifacts
     - Outputs: Persisted Client records"""
 }
