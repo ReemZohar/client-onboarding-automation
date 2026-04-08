@@ -79,7 +79,7 @@ The message should:
 
 Client Information:
 - Business Name: {client_data.get('name', 'N/A')}
-- Services OFFERED: {', '.join(client_data.get('services', []))}
+- Services Offered: {', '.join(client_data.get('services', []))}
 - Phone: {client_data.get('phone', 'N/A')}"""
 
         try:
