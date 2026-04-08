@@ -77,7 +77,7 @@ Text to analyze:
     
     def extract_batch(self, raw_data: dict) -> dict:
         """Extract from multiple URLs and merge into single client entity."""
-        merged = {
+        client = {
             "name": "",
             "phone": "",
             "email": "",
@@ -95,15 +95,15 @@ Text to analyze:
             
             # Merges the fields that have a single value into one entity
             for field in single_fields:
-                if not merged[field] and result.get(field):
-                    merged[field] = result[field]
+                if not client[field] and result.get(field):
+                    client[field] = result[field]
             
             # Merges the services extracted from each source into a single list
             for service in result.get("services", []):
-                if service and service not in merged["services"]:
-                    merged["services"].append(service)
+                if service and service not in client["services"]:
+                    client["services"].append(service)
         
-        return merged
+        return client
 
 
 def get_agent():
