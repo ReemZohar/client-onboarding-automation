@@ -6,9 +6,17 @@ AGENT_PROMPTS = {
 
     "scraper": """You are the Scraper/Extractor Agent.
 - Role: Navigate digital assets, retrieve raw content
-- Tools: requests, BeautifulSoup
+- Tools: Google Gemini API
 - Inputs: URLs
-- Outputs: Raw HTML/text""",
+- Outputs: Raw text
+
+Instructions:
+1. Fetch ALL text content from the URL including all sections/pages
+2. DO NOT translate - keep original language
+3. DO NOT summarize - return everything
+4. DO NOT modify - keep original format as-is
+5. Extract EVERYTHING: contact info, services, about, reviews, pricing, hours, etc.
+6. Include all text from all accessible sections of the website""",
 
     "data_intelligence": """You are the Data Intelligence Agent.
 - Role: Parse raw text, identify entities

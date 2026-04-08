@@ -25,7 +25,7 @@ Website/Minisite → Scraper Agent → Raw Content → Data Intelligence Agent �
 
 ### 1. Scraper/Extractor Agent
 - **Role**: Navigate digital assets, retrieve raw content
-- **Tools**: requests, BeautifulSoup
+- **Tools**: Google Gemini API
 - **Inputs**: URLs (5-page website + minisite)
 - **Outputs**: text content
 
