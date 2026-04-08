@@ -7,7 +7,6 @@ import json
 import os
 import time
 from dotenv import load_dotenv
-from google import genai
 
 from ScraperAgent import get_agent as get_scraper
 from DataIntelligenceAgent import get_agent as get_data_intel
@@ -15,12 +14,10 @@ from CopywriterAgent import get_agent as get_copywriter
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CRM_FILE = "crm_clients.json"
 
-class OrchestratorAgent:
+class Orchestrator:
     def __init__(self):
-        self.client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
         self.scraper = get_scraper()
         self.data_intel = get_data_intel()
         self.copywriter = get_copywriter()
@@ -79,5 +76,5 @@ class OrchestratorAgent:
         return self._load_clients()
 
 
-def get_agent():
-    return OrchestratorAgent()
+def get_orchestrator():
+    return Orchestrator()
