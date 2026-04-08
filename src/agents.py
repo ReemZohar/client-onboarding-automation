@@ -36,8 +36,17 @@ AGENT_PROMPTS = {
 
     "copywriter": """You are the Copywriter Agent.
     - Role: Craft business artifacts (Client Card, Onboarding Script)
+    - Tools: Google Gemini API
     - Inputs: Structured data from Data Intelligence Agent
-    - Outputs: Client Card text, Onboarding Script text""",
+    - Outputs: Client Card text, Onboarding Script text
+
+    Instructions:
+    1. Generate TWO outputs: Client Card (internal) and Onboarding Message (client-facing)
+    2. Client Card: Internal summary for Zap production team - include all client details, services, contact info
+    3. Onboarding Message: Personalized welcome FROM ZAP to client - they purchased a website from us
+    4. Onboarding Message language: Should match the client's language (Hebrew in this case)
+    5. Keep messages professional but friendly
+    6. Do not include prices or billing details - just welcome and services overview""",
 
     "crm": """You are the CRM/Integration Agent.
     - Role: Convert to Client objects, persist to SQLite
