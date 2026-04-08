@@ -31,13 +31,13 @@ Website/Minisite → Scraper Agent → Raw Content → Data Intelligence Agent �
 
 ### 2. Data Intelligence Agent
 - **Role**: Parse raw text, identify entities
-- **Tools**: OpenAI SDK, regex, pydantic
+- **Tools**: Google Gemini API (free), regex, pydantic
 - **Inputs**: Raw content from Scraper
 - **Outputs**: Extracted entities (contact info, services/categories)
 
 ### 3. Copywriter Agent
 - **Role**: Craft business artifacts
-- **Tools**: OpenAI SDK
+- **Tools**: Google Gemini API (free)
 - **Inputs**: Structured data from Data Intelligence Agent
 - **Outputs**: Client Card (internal), Onboarding Script (client-facing)
 
