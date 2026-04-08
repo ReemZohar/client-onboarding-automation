@@ -56,7 +56,6 @@ Website/Minisite → Scraper Agent → Raw Content → Data Intelligence Agent �
 - `email`: Contact email
 - `address`: Physical address
 - `services`: Comma-separated service categories
-- `source_urls`: JSON array of source URLs
 - `onboarding_script`: Generated onboarding script (text)
 - `client_card`: Generated client summary (text)
 
@@ -69,6 +68,10 @@ Website/Minisite → Scraper Agent → Raw Content → Data Intelligence Agent �
 - **Scalability**: Easy to add new sources/outputs
 - **Robustness**: Include error handling and data validation
 
-## Commands
+## Agent Guidelines
 
-No project configured yet. Initialize with Python and preferred dependencies.
+- Only change code when explicitly asked
+- Keep modifications minimal and focused on the specific task
+- May add validation/error handling only in the specific part being worked on, not in unrelated parts of the file
+
+## Commands
