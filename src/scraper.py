@@ -55,10 +55,3 @@ class ScraperAgent:
 def get_agent():
     """Factory function to get ScraperAgent instance."""
     return ScraperAgent()
-
-if __name__ == "__main__":
-    with open("src/demourls.txt") as f:
-        urls = [u.strip() for u in f if u.strip()]
-    
-    agent = ScraperAgent()
-    output = agent.scrape(urls)
