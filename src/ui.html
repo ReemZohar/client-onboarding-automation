@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Onboarding</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .container { max-width: 800px; width: 100%; }
+        h1 { font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 32px; text-align: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 20px; }
+        .client-name { font-size: 1.25rem; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; }
+        .info { margin-bottom: 12px; }
+        .info-label { font-size: 0.75rem; color: #888; display: block; margin-bottom: 2px; }
+        .info-value { font-size: 0.95rem; color: #333; }
+        .services { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .tag { background: #f0f0f0; color: #555; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; }
+        .message { font-size: 0.95rem; line-height: 1.7; color: #444; white-space: pre-wrap; }
+        .empty { text-align: center; color: #888; padding: 60px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Client Onboarding</h1>
+        <div class="grid" id="content">
+            <div class="empty">No client data</div>
+        </div>
+    </div>
+    <script>
+        async function loadClient() {
+            try {
+                const res = await fetch('crm_clients.json');
+                const clients = await res.json();
+                if (!clients.length) return;
+                const c = clients[clients.length - 1];
+                document.getElementById('content').innerHTML =
+                    `<div class="card"><h2>Client Card</h2><div class="client-name">${c.name}</div><div class="info"><span class="info-label">Phone</span><span class="info-value">${c.phone}</span></div><div class="info"><span class="info-label">Email</span><span class="info-value">${c.email}</span></div><div class="info"><span class="info-label">Address</span><span class="info-value">${c.address}</span></div><div class="info"><span class="info-label">Services</span><div class="services">${(c.services||[]).map(s=>`<span class="tag">${s}</span>`).join('')}</div></div></div><div class="card"><h2>Welcome Message</h2><div class="message">${c.onboarding_msg}</div></div>`;
+            } catch(e) { console.log('No data'); }
+        }
+        loadClient();
+    </script>
+</body>
+</html>
