@@ -23,14 +23,7 @@ class CopywriterAgent:
         self.system_prompt = get_agent_prompt("copywriter")
     
     def generate_client_card(self, client_data: dict) -> str:
-        """Generate internal Client Card for Zap production.
-        
-        Args:
-            client_data: dict with name, phone, email, address, services
-            
-        Returns:
-            Client Card text
-        """
+        """Generate internal Client Card for Zap production."""
         prompt = f"""{self.system_prompt}
 
 Generate a Client Card - an internal summary for Zap production team.
@@ -55,14 +48,7 @@ DO NOT include onboarding message - this is for internal team reference only."""
             return f"Error: {str(e)}"
     
     def generate_onboarding_message(self, client_data: dict) -> str:
-        """Generate personalized onboarding message from Zap.
-        
-        Args:
-            client_data: dict with client information
-            
-        Returns:
-            Onboarding message text - ONLY the message, no labels, no extra formatting
-        """
+        """Generate personalized onboarding message from Zap."""
         prompt = f"""{self.system_prompt}
 
 This is the client information (the business that purchased a website from Zap):
@@ -82,14 +68,7 @@ Task: Output ONLY the onboarding message written in Hebrew (no english character
             return f"Error: {str(e)}"
     
     def generate(self, client_data: dict) -> dict:
-        """Generate both Client Card and Onboarding Message.
-        
-        Args:
-            client_data: dict with client information
-            
-        Returns:
-            dict with 'client_card' and 'onboarding_message'
-        """
+        """Generate and return both Client Card and Onboarding Message."""
         return {
             "client_card": self.generate_client_card(client_data),
             "onboarding_message": self.generate_onboarding_message(client_data)

@@ -20,6 +20,7 @@ class ScraperAgent:
     """Scraper/Extractor Agent - retrieves raw content from URLs."""
     
     def __init__(self):
+        # Initialize Gemini client for AI fallback
         self.client = genai.Client(api_key=GEMINI_API_KEY)
         self.system_prompt = get_agent_prompt("scraper")
     
@@ -27,6 +28,7 @@ class ScraperAgent:
         """Fallback: use AI to fetch URL content when scraping fails."""
         
         try:
+            # Ask Gemini to extract the page content
             response = self.client.models.generate_content(
                 model="gemini-2.5-flash-lite",
                 contents=f"{self.system_prompt}\n\nURL to fetch: {url}"
@@ -38,18 +40,29 @@ class ScraperAgent:
     def scrape(self, urls: list[str]) -> dict:
         """Scrape URLs with AI fallback on failure."""
         results = {}
+        
         for url in urls:
             try:
+                # Try HTTP request first
                 response = requests.get(url, timeout=15)
+                
+                # If blocked (403), fall back to AI
                 if response.status_code == 403:
                     results[url] = self.fetch_with_ai(url)
                 else:
+                    # Parse HTML and extract visible text
                     soup = BeautifulSoup(response.text, "html.parser")
+                    
+                    # Remove noisy elements (scripts, styles, nav, footer)
                     for tag in soup(['script', 'style', 'nav', 'footer']):
                         tag.decompose()
+                    
                     results[url] = soup.get_text()
-            except Exception as e:
+                    
+            except Exception:
+                # On any error, try AI fallback
                 results[url] = self.fetch_with_ai(url)
+        
         return results
 
 def get_agent():
