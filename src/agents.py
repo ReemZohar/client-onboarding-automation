@@ -39,7 +39,7 @@ AGENT_PROMPTS = {
     1. Generate Client Card: Internal summary for Zap production team - include all client details, services, contact info
     2. Generate Onboarding Message: Personalized welcome from Zap to the client (they purchased a website from us)
     3. The Onboarding Message is written FROM Zap TO the client - use the client information below to personalize it
-    4. Language: Hebrew only (no English, no transliterations)
+    4. Language: Hebrew ONLY (no English, no transliterations)
     5. Output ONLY the message text - no labels, no extra formatting, no prompt references
     6. Personalize with: client name, their location, their services (their services, not Zap's)
     7. Keep it professional but friendly and short (2-3 paragraphs)"""

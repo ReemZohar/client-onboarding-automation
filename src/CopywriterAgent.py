@@ -73,7 +73,7 @@ This is the client information (the business that purchased a website from Zap):
 - Location: {client_data.get('address', 'N/A')}
 - Their Services: {', '.join(client_data.get('services', []))}
 
-Task: Output ONLY the onboarding message written in Hebrew from Zap to this client. No labels, no explanations, no English."""
+Task: Output ONLY the onboarding message written in Hebrew (no english characters allowed) from Zap to this client. No labels, no explanations, no English."""
 
         try:
             response = self.client.models.generate_content(

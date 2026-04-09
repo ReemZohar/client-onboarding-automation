@@ -50,7 +50,7 @@ Generates the following from the structured data:
 
 ### Run (WSL/Linux)
 1. Pick your own URLs or use those from `src/demourls.txt`
-2. Run: `cd src && python3 src/run.py <ur1> <url2>`
-   Example: `cd src && python3 run.py https://www.skai-kerur.co.il/ https://www.d.co.il/65462530/26250/`
-3. Serve src folder: `python3 -m http.server 8000`
+2. Run: `python3 src/run.py <ur1> <url2>`
+   Example: `python3 src/run.py https://www.skai-kerur.co.il/ https://www.d.co.il/65462530/26250/`
+3. Serve src folder: `cd src && python3 -m http.server 8000`
 4. Open `http://localhost:8000/ui.html`
