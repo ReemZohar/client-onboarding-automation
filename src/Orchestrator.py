@@ -4,7 +4,6 @@ Orchestrator Agent
 - CRM: Local JSON file storage
 """
 import json
-import os
 import time
 from dotenv import load_dotenv
 
@@ -34,7 +33,7 @@ class Orchestrator:
         combined_text = "\n\n---\n\n".join(raw_data.values())
         
         print("[1/4] Extracting data...")
-        structured = self.data_intel.extract(combined_text)
+        structured = self.data_intel.extract_batch(combined_text)
         time.sleep(2)
         
         if "error" in structured:

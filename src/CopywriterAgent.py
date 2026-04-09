@@ -19,10 +19,7 @@ class CopywriterAgent:
     """Copywriter Agent - generates business artifacts from client data."""
     
     def __init__(self):
-        self.client = None
-        if GEMINI_API_KEY:
-            from google import genai
-            self.client = genai.Client(api_key=GEMINI_API_KEY)
+        self.client = genai.Client(api_key=GEMINI_API_KEY)
         self.system_prompt = get_agent_prompt("copywriter")
     
     def generate_client_card(self, client_data: dict) -> str:

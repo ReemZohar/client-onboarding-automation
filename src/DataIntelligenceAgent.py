@@ -6,7 +6,6 @@ Data Intelligence Agent
 - Outputs: Extracted entities (contact info, services/categories)
 """
 import os
-import re
 from dotenv import load_dotenv
 from google import genai
 
@@ -53,7 +52,6 @@ class DataIntelligenceAgent:
         
         Args:
             raw_text: Raw text from Scraper Agent
-            source_url: URL where the text came from
             
         Returns:
             dict with extracted client fields: name, phone, email, address, services
