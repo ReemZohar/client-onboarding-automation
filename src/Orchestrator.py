@@ -71,9 +71,6 @@ class Orchestrator:
         with open(CRM_FILE, "w", encoding="utf-8") as f:
             json.dump(clients, f, ensure_ascii=False, indent=2)
         print(f"    -> Client saved")
-    
-    def get_clients(self) -> list:
-        return self._load_clients()
 
 
 def get_orchestrator():
