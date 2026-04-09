@@ -2,6 +2,17 @@
 
 Multi-agent pipeline for onboarding clients. Extracts data from websites, processes via LLM, and generates client artifacts.
 
+## Development
+
+This project was built with **opencode CLI** as a coding assistant.
+
+## Libraries
+
+- **requests** - HTTP library for web requests
+- **beautifulsoup4** - HTML parsing and scraping
+- **python-dotenv** - Environment variable management
+- **google-genai** - Google Gemini API client
+
 ## Architecture
 
 ```
@@ -44,7 +55,13 @@ Generates the following from the structured data:
 
 ## Usage
 
-### Setup
+### Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Setup
 1. Copy `.env.example` to `.env`
 2. Add your Gemini API key: `GEMINI_API_KEY=your_key_here`
 
