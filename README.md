@@ -48,9 +48,9 @@ Generates the following from the structured data:
 1. Copy `.env.example` to `.env`
 2. Add your Gemini API key: `GEMINI_API_KEY=your_key_here`
 
-### Run
+### Run (WSL/Linux)
 1. Pick your own URLs or use those from `src/demourls.txt`
-2. Run: `cd src && python run.py <ur1> <url2>`
-   Example: `python run.py https://www.skai-kerur.co.il/ https://www.d.co.il/65462530/26250/`
-3. Serve src folder: `cd src && python -m http.server 8000`
+2. Run: `cd src && python3 src/run.py <ur1> <url2>`
+   Example: `cd src && python3 run.py https://www.skai-kerur.co.il/ https://www.d.co.il/65462530/26250/`
+3. Serve src folder: `python3 -m http.server 8000`
 4. Open `http://localhost:8000/ui.html`
