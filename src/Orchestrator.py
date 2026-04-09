@@ -14,7 +14,7 @@ from CopywriterAgent import get_agent as get_copywriter
 
 load_dotenv()
 
-CRM_FILE = "crm_clients.json"
+CRM_FILE = "src/crm_clients.json"
 
 class Orchestrator:
     def __init__(self):
