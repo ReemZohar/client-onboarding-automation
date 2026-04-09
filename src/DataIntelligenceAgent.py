@@ -72,36 +72,6 @@ Text to analyze:
             
         except Exception as e:
             return {"error": str(e)}
-    
-    def extract_batch(self, raw_data: dict) -> dict:
-        """Extract from multiple URLs and merge into single client entity."""
-        client = {
-            "name": "",
-            "phone": "",
-            "email": "",
-            "address": "",
-            "services": [],
-        }
-        
-        single_fields = ["name", "phone", "email", "address"]
-        
-        for text in raw_data.items():
-            result = self.extract(text)
-            
-            if "error" in result:
-                continue
-            
-            # Merges the fields that have a single value into one entity
-            for field in single_fields:
-                if not client[field] and result.get(field):
-                    client[field] = result[field]
-            
-            # Merges the services extracted from each source into a single list
-            for service in result.get("services", []):
-                if service and service not in client["services"]:
-                    client["services"].append(service)
-        
-        return client
 
 
 def get_agent():
