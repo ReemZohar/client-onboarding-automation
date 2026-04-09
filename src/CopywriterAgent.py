@@ -64,23 +64,16 @@ DO NOT include onboarding message - this is for internal team reference only."""
             client_data: dict with client information
             
         Returns:
-            Onboarding message text
+            Onboarding message text - ONLY the message, no labels, no extra formatting
         """
         prompt = f"""{self.system_prompt}
 
-Generate an onboarding message FROM ZAP to the client.
+This is the client information (the business that purchased a website from Zap):
+- Name: {client_data.get('name', 'N/A')}
+- Location: {client_data.get('address', 'N/A')}
+- Their Services: {', '.join(client_data.get('services', []))}
 
-The message should:
-- Welcome the client because they purchased a website from Zap
-- Be warm and professional
-- Mention the services they offer
-- Be in Hebrew (since the client data is in Hebrew)
-- Be short and friendly
-
-Client Information:
-- Business Name: {client_data.get('name', 'N/A')}
-- Services Offered: {', '.join(client_data.get('services', []))}
-- Phone: {client_data.get('phone', 'N/A')}"""
+Task: Output ONLY the onboarding message written in Hebrew from Zap to this client. No labels, no explanations, no English."""
 
         try:
             response = self.client.models.generate_content(
