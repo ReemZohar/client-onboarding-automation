@@ -23,10 +23,10 @@ class CopywriterAgent:
         self.system_prompt = get_agent_prompt("copywriter")
     
     def generate_client_card(self, client_data: dict) -> str:
-        """Generate internal Client Card for Zap production."""
+        """Generate internal Client Card for Dapei Zahav production."""
         prompt = f"""{self.system_prompt}
 
-Generate a Client Card - an internal summary for Zap production team.
+Generate a Client Card - an internal summary for Dapei Zahav production team.
 
 Client Information:
 - Name: {client_data.get('name', 'N/A')}
@@ -48,15 +48,15 @@ DO NOT include onboarding message - this is for internal team reference only."""
             return f"Error: {str(e)}"
     
     def generate_onboarding_message(self, client_data: dict) -> str:
-        """Generate personalized onboarding message from Zap."""
+        """Generate personalized onboarding message from Dapei Zahav."""
         prompt = f"""{self.system_prompt}
 
-This is the client information (the business that purchased a website from Zap):
+This is the client information (the business that purchased a website from Dapei Zahav):
 - Name: {client_data.get('name', 'N/A')}
 - Location: {client_data.get('address', 'N/A')}
 - Their Services: {', '.join(client_data.get('services', []))}
 
-Task: Output ONLY the onboarding message written in Hebrew (no english characters allowed) from Zap to this client. No labels, no explanations, no English."""
+Task: Output ONLY the onboarding message written in Hebrew (no english characters allowed) from Dapei Zahav to this client. No labels, no explanations, no English."""
 
         try:
             response = self.client.models.generate_content(
